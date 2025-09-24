@@ -1,0 +1,1 @@
+git remote rm  testes-js

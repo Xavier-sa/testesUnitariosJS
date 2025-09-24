@@ -8,6 +8,7 @@ beforeEach(() => {
 
 test("deve adicionar uma nota válida", () => {
   boletim.adicionarNota(8);
+  
   expect(boletim.notas).toContain(8);
 });
 

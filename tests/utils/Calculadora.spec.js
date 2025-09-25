@@ -22,7 +22,7 @@ import { Calculadora } from "../../src/utils/Calculadora.js";
  */
 
 let calculadora;
-
+//arrange
 beforeEach(() => {
   calculadora = new Calculadora();
 });
@@ -44,7 +44,14 @@ describe('Testes unitários da classe Calculadora.js', () => {
 
   describe("subtrair()", () => {
     test("deve subtrair dois valores", () => {
-      expect(calculadora.subtrair(5, 3)).toBe(2);
+      // Act
+      const resultado = calculadora.subtrair(1, 2);
+      // Assert
+      expect(resultado).toBe(-1);  // Corrigido aqui
+    });
+
+    test("deve lançar erro se valor não for número", () => {
+      expect(() => calculadora.subtrair("a", 2)).toThrow(TypeError);
     });
   });
 

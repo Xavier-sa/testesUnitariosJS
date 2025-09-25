@@ -47,16 +47,26 @@ describe('Testes unitários da classe Calculadora.js', () => {
       // Act
       const resultado = calculadora.subtrair(1, 2);
       // Assert
-      expect(resultado).toBe(-1);  // Corrigido aqui
+      expect(resultado).toBe(-1);  // 
     });
 
+    test("deve subtrair dois valores negativos", () => {
+      // Act
+      const resultado = calculadora.subtrair(-10, -10);
+      // Assert
+      expect(resultado).toBe(0);  // funcionou
+
+    });
+
+
     test("deve lançar erro se valor não for número", () => {
-      expect(() => calculadora.subtrair("a", 2)).toThrow(TypeError);
+      expect(() => calculadora.subtrair("a", 2)).toThrow(TypeError);//funcionou
     });
   });
 
   describe("multiplicar()", () => {
     test("deve multiplicar dois valores", () => {
+
       expect(calculadora.multiplicar(4, 3)).toBe(12);
     });
   });

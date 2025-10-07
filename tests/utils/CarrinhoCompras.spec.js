@@ -136,4 +136,12 @@ describe('Testes unitários da classe CarrinhoDeCompras', () => {
       expect(carrinho.calcularTotal()).toBe(0);
     });
   });
+
+
+  test("deve permitir adicionar itens com o mesmo nome (duplicatas)", () => {
+    carrinho.adicionarItem("Pão", 5.0, 1);
+    carrinho.adicionarItem("Pão", 5.0, 2);
+    expect(carrinho.itens.length).toBe(2);
+  });
+
 });

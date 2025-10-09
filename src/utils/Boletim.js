@@ -1,7 +1,7 @@
 export class Boletim {
 
   constructor() {
-    this.notas = [];
+    this.notas = [];//ARRAY notas
   }
 
   adicionarNota(nota) {

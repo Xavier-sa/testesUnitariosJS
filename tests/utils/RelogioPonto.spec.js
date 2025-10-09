@@ -45,6 +45,9 @@ describe('Testes unitários da classe RelogioPonto', () => {
 
       // Assert
       expect(relogio.registros.length).toBe(2);
+      // abaixo verifica se as entradas ainda estão "abertas" (sem hora de saída)
+      // ex: { horaEntrada: "08:00", horaSaida: null },
+      //     { horaEntrada: "12:00", horaSaida: null } 
       expect(relogio.registros.every(r => r.horaSaida === null)).toBe(true);
     });
 
@@ -76,9 +79,9 @@ describe('Testes unitários da classe RelogioPonto', () => {
       // Arrange: Múltiplas entradas, apenas a primeira concluída
       relogio.registrarEntrada(FUNCIONARIO_ID, "08:00"); // Entrada ativa
       relogio.registrarEntrada(FUNCIONARIO_ID, "13:00"); // Entrada ativa
-      
+
       // At: Registra a saída da entrada ativa mais recente (o find só pega o primeiro 'horaSaida: null')
-      relogio.registrarSaida(FUNCIONARIO_ID, "17:00"); 
+      relogio.registrarSaida(FUNCIONARIO_ID, "17:00");
 
       // Assert: A primeira entrada ativa (index 0) deve ser fechada, conforme a implementação padrão do find()
       // Nota: Na implementação atual, o método `find` sempre encontra a primeira entrada (index 0) com `horaSaida: null`.
@@ -89,7 +92,7 @@ describe('Testes unitários da classe RelogioPonto', () => {
 
     test("deve lançar erro se não houver entrada ativa para o funcionário", () => {
       // Arrange: Nenhuma entrada registrada
-      
+
       // Act & Assert
       expect(() => relogio.registrarSaida(FUNCIONARIO_ID, "17:00")).toThrow("Nenhuma entrada ativa encontrada");
 
